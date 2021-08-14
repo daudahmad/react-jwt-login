@@ -1,25 +1,48 @@
+import React, { useState } from "react";
+
 export function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(username);
+    console.log(password);
+  };
+
   return (
-    <div className="container py-4 text-center form-signin bg-light border rounded-3">
-      <form name="form">
+    <div className="container py-4 text-center form-signin bg-light border rounded-3 mt-5">
+      <form name="form" onSubmit={handleSubmit}>
         <h1 className="h3 mb-3 fw-normal">Please Log In</h1>
-        <div className="form-floating">
+        <div className="form-floating mb-1">
           <input
-            id="email"
-            type="email"
-            name="email"
+            type="text"
+            name="username"
             className="form-control"
-            placeholder="name@example.com"
+            placeholder="username"
+            value={username}
+            required
+            onChange={handleUsernameChange}
           />
-          <label htmlFor="email">Email address</label>
+          <label htmlFor="username">Username</label>
         </div>
-        <div className="form-floating">
+        <div className="form-floating mb-1">
           <input
-            id="password"
             type="password"
             name="password"
             className="form-control"
             placeholder="Password"
+            value={password}
+            required
+            onChange={handlePasswordChange}
           />
           <label htmlFor="password">Password</label>
         </div>
