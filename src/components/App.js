@@ -1,16 +1,49 @@
-import { Login } from "./Login";
-import { Header } from "./Header";
+import React, { useState } from "react";
+import Login from "./Login";
+import Header from "./Header";
+import Home from "./Home";
+import login from "../services/auth.service";
 import "../styles.css";
 
-function App() {
+export default function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [accessToken, setAccessToken] = useState("");
+
+  const handleLogin = async (username, password) => {
+    setIsLoading(true);
+    try {
+      const result = await login(username, password);
+      if (result.access_token) {
+        setAccessToken(result.access_token);
+        setIsAuthenticated(true);
+        setIsLoading(false);
+      }
+    } catch (error) {
+      setErrorMessage(error.response.data.message);
+      setIsLoading(false);
+    }
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    setAccessToken("");
+  };
+
   return (
     <div>
-      <Header />
+      <Header isAuthenticated={isAuthenticated} handleLogout={handleLogout} />
       <main>
-        <Login />
+        {!isAuthenticated && (
+          <Login
+            isLoading={isLoading}
+            errorMessage={errorMessage}
+            handleLogin={handleLogin}
+          />
+        )}
+        {isAuthenticated && <Home accessToken={accessToken} />}
       </main>
     </div>
   );
 }
-
-export default App;
