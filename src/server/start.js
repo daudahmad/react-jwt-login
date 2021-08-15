@@ -1,7 +1,7 @@
 const express = require("express");
 const { getRoutes } = require("./routes/index");
 
-const startServer = ({ port = process.env.PORT } = {}) => {
+const startServer = ({ port = 4000 } = {}) => {
   const app = express();
   app.use(express.json());
 
@@ -11,12 +11,8 @@ const startServer = ({ port = process.env.PORT } = {}) => {
   // add the generic error handler just in case errors are missed by middleware
   app.use(errorMiddleware);
 
-  // Start the express app and resolve the promise with the express server
-  return new Promise((resolve) => {
-    const server = app.listen(port, () => {
-      console.log(`Listening on port ${server.address().port}`);
-      resolve(server);
-    });
+  app.listen(port, () => {
+    console.log(`Listening on port ${port}`);
   });
 };
 

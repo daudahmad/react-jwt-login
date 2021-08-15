@@ -19,13 +19,13 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "nodemon -r dotenv/config ./src/server/index.js",
+    "dev-server": "nodemon -r dotenv/config ./src/server/index.js",
+    "server": "node -r dotenv/config ./src/server/index.js",
     "client": "react-scripts start",
-    "dev": "concurrently \"yarn run server\" \"yarn run client\""
+    "start": "concurrently \"yarn run server\" \"yarn run client\""
   },
   "eslintConfig": {
     "extends": [

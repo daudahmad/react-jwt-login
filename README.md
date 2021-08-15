@@ -6,7 +6,7 @@ Design a login page in which users retrieve a jwt token after successful authent
 
 In the project directory, you can run:
 
-### `yarn run dev`
+### `yarn start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.

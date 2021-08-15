@@ -21,7 +21,11 @@ export default function App() {
         setIsLoading(false);
       }
     } catch (error) {
-      setErrorMessage(error.response.data.message);
+      if (error.response.data) {
+        setErrorMessage(error.response.data.message);
+      } else {
+        setErrorMessage(error.response.statusText);
+      }
       setIsLoading(false);
     }
   };
@@ -29,6 +33,7 @@ export default function App() {
   const handleLogout = () => {
     setIsAuthenticated(false);
     setAccessToken("");
+    setErrorMessage("");
   };
 
   return (

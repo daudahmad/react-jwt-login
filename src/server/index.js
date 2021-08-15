@@ -3,4 +3,4 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
-startServer();
+startServer({ port: 4000 });
