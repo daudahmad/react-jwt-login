@@ -14,6 +14,7 @@ const getAuthRoutes = () => {
 const login = (req, res) => {
   try {
     const { username, password } = req.body;
+
     // Validate that username and password are provided
     if (!username || !password) {
       return badRequestError(res);
@@ -36,7 +37,6 @@ const login = (req, res) => {
 
 const createSuccessResponse = (username) => {
   const accessToken = generateAccessToken(username, EXPIRES_IN);
-  console.log(accessToken);
 
   return {
     access_token: accessToken,
@@ -62,4 +62,4 @@ const internalError = (res) => {
   });
 };
 
-module.exports = { getAuthRoutes };
+module.exports = { getAuthRoutes, login };

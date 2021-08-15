@@ -6,13 +6,21 @@ Design a login page in which users retrieve a jwt token after successful authent
 
 In the project directory, you can run:
 
-### `yarn start`
+### `yarn run dev`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+This will also start an api at [http://localhost:4000](http://localhost:4000) which will be used to authenticate login
+
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+On the login page you can use the following to log in:
+```
+Username: jack
+Password: jack123
+```
 
 ### `yarn test`
 

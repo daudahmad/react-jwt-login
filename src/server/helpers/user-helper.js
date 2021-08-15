@@ -11,10 +11,6 @@ const USERS = [
     username: "bill",
     password: "bill123",
   },
-  {
-    username: "aa",
-    password: "aa",
-  },
 ];
 
 const authenticateUser = ({ username, password }) => {
