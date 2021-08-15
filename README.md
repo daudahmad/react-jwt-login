@@ -22,6 +22,8 @@ Username: jack
 Password: jack123
 ```
 
+Clicking on 'Log In' will authenticate against the API and send back a JWT access token if successful.
+
 ### `yarn test`
 
 Launches the test runner in the interactive watch mode.\
